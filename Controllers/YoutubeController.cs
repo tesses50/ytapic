@@ -41,7 +41,7 @@ string asAscii = Encoding.ASCII.GetString(
             new EncoderReplacementFallback("_"),
             new DecoderExceptionFallback()
             ),
-        Encoding.UTF8.GetBytes(sanitized);
+        Encoding.UTF8.GetBytes(sanitized)
     )
 );
 return asAscii.Replace(';',' ');
