@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="YoutubeExplode" Version="4.7.15" />
+    <PackageReference Include="YoutubeExplode" Version="5.0.1" />
 	
   </ItemGroup>
 
