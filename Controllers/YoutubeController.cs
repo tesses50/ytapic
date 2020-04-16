@@ -327,8 +327,16 @@ namespace DL.Controllers
         return Redirect(channe2l.LogoUrl);
 
     }
+        [HttpGet("UserImage/{channel}")]
+        public async Task<IActionResult> UserImage(string channel)
+        {
+            var YT = new YoutubeClient();
+            var channe2l = await YT.Channels.GetByUserAsync(channel);
 
- }
+            return Redirect(channe2l.LogoUrl);
+
+        }
+    }
 }
 
 
