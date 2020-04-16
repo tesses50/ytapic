@@ -23,7 +23,10 @@ namespace DL.Controllers
 {
     [Route("Grabber")]
     [ApiController]
-    public string fixstr(string inputString){
+ 
+    public class YoutubeController : ControllerBase
+    {
+       public string fixstr(string inputString){
      
             string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
             string replacement = "_";
@@ -41,11 +44,8 @@ string asAscii = Encoding.ASCII.GetString(
         Encoding.UTF8.GetBytes(sanitized);
     )
 );
-return asAscii;
+return asAscii.Replace(';',' ');
     }
-    public class YoutubeController : ControllerBase
-    {
-
         [HttpGet("Video/{id}")]
         public async Task<FileStreamResult> DownloadAsync(string id)
         {
