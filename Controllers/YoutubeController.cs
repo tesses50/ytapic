@@ -23,6 +23,26 @@ namespace DL.Controllers
 {
     [Route("Grabber")]
     [ApiController]
+    public string fixstr(string inputString){
+     
+            string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
+            string replacement = "_";
+
+            Regex regEx = new Regex(pattern);
+            string sanitized = regEx.Replace(inputString, replacement);
+string asAscii = Encoding.ASCII.GetString(
+    Encoding.Convert(
+        Encoding.UTF8,
+        Encoding.GetEncoding(
+            Encoding.ASCII.EncodingName,
+            new EncoderReplacementFallback("_"),
+            new DecoderExceptionFallback()
+            ),
+        Encoding.UTF8.GetBytes(sanitized);
+    )
+);
+return asAscii;
+    }
     public class YoutubeController : ControllerBase
     {
 
@@ -33,14 +53,9 @@ namespace DL.Controllers
             var videoname0 = await YT.Videos.GetAsync(id);
 
 
-            string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
-            string replacement = "_";
-
-            Regex regEx = new Regex(pattern);
-            string sanitized = regEx.Replace(videoname0.Title, replacement);
             var strs = await YT.Videos.Streams.GetManifestAsync(id);
             var high = strs.GetMuxed().WithHighestVideoQuality();
-
+            string sanitized = fixstr(videoname0.Title);
 
             return File(YT.Videos.Streams.GetAsync(high).Result, $"video/{high.Container.Name}", $"{sanitized}.{high.Container.Name}", true);
         }
@@ -52,12 +67,8 @@ namespace DL.Controllers
             var videoname0 = await YT.Videos.GetAsync(id);
 
 
-            string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
-            string replacement = "_";
-
-            Regex regEx = new Regex(pattern);
-            string sanitized = regEx.Replace(videoname0.Title, replacement);
-            var strs = await YT.Videos.Streams.GetManifestAsync(id);
+           string sanitized = fixstr(videoname0.Title);
+           var strs = await YT.Videos.Streams.GetManifestAsync(id);
             var high = strs.GetVideo().WithHighestVideoQuality();
 
 
@@ -70,12 +81,8 @@ namespace DL.Controllers
             var videoname0 = await YT.Videos.GetAsync(id);
 
 
-            string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
-            string replacement = "_";
-
-            Regex regEx = new Regex(pattern);
-            string sanitized = regEx.Replace(videoname0.Title, replacement);
-            var strs = await YT.Videos.Streams.GetManifestAsync(id);
+           string sanitized = fixstr(videoname0.Title);
+           var strs = await YT.Videos.Streams.GetManifestAsync(id);
             var high = strs.GetAudioOnly().WithHighestBitrate();
 
 
@@ -113,12 +120,8 @@ namespace DL.Controllers
             {
                 var fileName = v.Title;
 
-                string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
-                string replacement = "_";
 
-                Regex regEx = new Regex(pattern);
-                string sanitized = regEx.Replace(fileName, replacement).Replace(" ", "*");
-
+                     string sanitized = fixstr(fileName).Replace(' ','*');
 
                 s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
                 videos++;
@@ -145,12 +148,7 @@ namespace DL.Controllers
 
                     var fileName = v.Title;
 
-                    string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
-                    string replacement = "_";
-
-                    Regex regEx = new Regex(pattern);
-                    string sanitized = regEx.Replace(fileName, replacement).Replace(" ", "*");
-
+                     string sanitized = fixstr(fileName).Replace(' ','*');
 
                     s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
                     videos++;
@@ -173,14 +171,7 @@ namespace DL.Controllers
             foreach (YoutubeExplode.Videos.Video v in vids2)
             {
                 var fileName = v.Title;
-
-                string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
-                string replacement = "_";
-
-                Regex regEx = new Regex(pattern);
-                string sanitized = regEx.Replace(fileName, replacement).Replace(" ", "*");
-
-
+ string sanitized = fixstr(fileName).Replace(' ','*');
                 s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
                 videos++;
 
@@ -206,13 +197,7 @@ namespace DL.Controllers
 
 
                     var fileName = v.Title;
-
-                    string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
-                    string replacement = "_";
-
-                    Regex regEx = new Regex(pattern);
-                    string sanitized = regEx.Replace(fileName, replacement).Replace(" ", "*");
-
+ string sanitized = fixstr(fileName).Replace(' ','*');
 
                     s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
                     videos++;
@@ -235,11 +220,7 @@ namespace DL.Controllers
             {
                 var fileName = v.Title;
 
-                string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
-                string replacement = "_";
-
-                Regex regEx = new Regex(pattern);
-                string sanitized = regEx.Replace(fileName, replacement).Replace(" ", "*");
+                string sanitized = fixstr(fileName).Replace(" ", "*");
 
                 if (videos < 499) {
                     s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
@@ -276,13 +257,9 @@ namespace DL.Controllers
             foreach (YoutubeExplode.Videos.Video v in vids2)
             {
 
-                var fileName = v.Title;
+                 var fileName = v.Title;
 
-                string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
-                string replacement = "_";
-
-                Regex regEx = new Regex(pattern);
-                string sanitized = regEx.Replace(fileName, replacement).Replace(" ", "*");
+                     string sanitized = fixstr(fileName).Replace(' ','*');
                 s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
 
             }
