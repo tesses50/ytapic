@@ -26,6 +26,21 @@ namespace DL.Controllers
  
     public class YoutubeController : ControllerBase
     {
+        private static bool ChannelIsValid(string? id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+                return false;
+
+            // Channel IDs should start with these characters
+            if (!id.StartsWith("UC", StringComparison.Ordinal))
+                return false;
+
+            // Channel IDs are always 24 characters
+            if (id.Length != 24)
+                return false;
+
+            return !Regex.IsMatch(id, @"[^0-9a-zA-Z_\-]");
+        }
        public string fixstr(string inputString){
      
             string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
@@ -110,7 +125,7 @@ return asAscii.Replace(';',' ');
         public async Task<IActionResult> NewUser2VideosAsync(string date, string id)
         {
             var YT = new YoutubeClient();
-         var vids = YoutubeExplode.Channels.ChannelId.IsValid(id) ? new ChannelId(id) : (await YT.Channels.GetByUserAsync(id)).Id;
+         var vids = ChannelIsValid(id) ? new ChannelId(id) : (await YT.Channels.GetByUserAsync(id)).Id;
             var ien = YT.Channels.GetUploadsAsync(vids);
             var vids2 = await ien.ToListAsync();
             int videos = 0;
@@ -138,7 +153,7 @@ return asAscii.Replace(';',' ');
         {
         var YT = new YoutubeClient();
 
-            var vids = YoutubeExplode.Channels.ChannelId.IsValid(id) ? new ChannelId(id) : (await YT.Channels.GetByUserAsync(id)).Id;
+            var vids = ChannelIsValid(id) ? new ChannelId(id) : (await YT.Channels.GetByUserAsync(id)).Id;
             var ien = YT.Channels.GetUploadsAsync(vids);
             var vids2 = await ien.ToListAsync();
             int videos = 0;
