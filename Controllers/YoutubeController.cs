@@ -106,6 +106,58 @@ return asAscii.Replace(';',' ');
 
             return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "query.txt", true);
         }
+         [HttpGet("ChannelNew2/{date}/{id}")]
+        public async Task<IActionResult> NewUser2VideosAsync(string date, string id)
+        {
+            var YT = new YoutubeClient();
+         var vids = YoutubeExplode.Channels.ChannelId.IsValid(id) ? new ChannelId(id) : (await YT.Channels.GetByUserAsync(id)).Id;
+            var ien = YT.Channels.GetUploadsAsync(vids);
+            var vids2 = await ien.ToListAsync();
+            int videos = 0;
+            string s = "";
+            foreach (YoutubeExplode.Videos.Video v in vids2)
+            {
+                if (v.UploadDate.Date >= new DateTime(int.Parse(date.Split("-")[0]), int.Parse(date.Split("-")[1]), int.Parse(date.Split("-")[2])))
+                {
+
+
+                    var fileName = v.Title;
+
+                     string sanitized = fixstr(fileName).Replace(' ','*');
+
+                    s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
+                    videos++;
+
+                } }
+
+
+            return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "info.txt", true);
+        }
+        [HttpGet("Channel2/{id}")]
+        public async Task<IActionResult> User2VideosAsync(string id)
+        {
+        var YT = new YoutubeClient();
+
+            var vids = YoutubeExplode.Channels.ChannelId.IsValid(id) ? new ChannelId(id) : (await YT.Channels.GetByUserAsync(id)).Id;
+            var ien = YT.Channels.GetUploadsAsync(vids);
+            var vids2 = await ien.ToListAsync();
+            int videos = 0;
+            string s = "";
+            foreach (YoutubeExplode.Videos.Video v in vids2)
+            {
+                var fileName = v.Title;
+
+
+                     string sanitized = fixstr(fileName).Replace(' ','*');
+
+                s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
+                videos++;
+
+            }
+
+
+            return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "info.txt", true);
+        }
         [HttpGet("User/{id}")]
         public async Task<IActionResult> UserVideosAsync(string id)
         {
