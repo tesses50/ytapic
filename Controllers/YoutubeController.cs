@@ -26,7 +26,7 @@ namespace DL.Controllers
  
     public class YoutubeController : ControllerBase
     {
-        private static bool ChannelIsValid(string? id)
+        private static bool ChannelIsValid(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
                 return false;
