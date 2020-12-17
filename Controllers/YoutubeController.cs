@@ -351,6 +351,37 @@ return asAscii.Replace(';',' ');
             var strs = await YT.Videos.GetAsync(id);
             return Redirect(strs.Thumbnails.HighResUrl);
         }
+        private bool TryNormalizeVL(string videoUri, out string normalized)
+        {
+            // If you fix something in here, please be sure to fix in 
+            // DownloadUrlResolver.TryNormalizeYoutubeUrl as well.
+
+            normalized = null;
+
+            var builder = new StringBuilder(videoUri);
+
+            videoUri = builder.Replace("youtu.be/", "youtube.com/watch?v=")
+                .Replace("youtube.com/embed/", "youtube.com/watch?v=")
+                .Replace("/v/", "/watch?v=")
+                .Replace("/watch#", "/watch?")
+                .ToString();
+
+            var query = new Query(videoUri);
+
+            string value;
+
+            if (!query.TryGetValue("v", out value))
+                return false;
+
+            normalized = "https://youtube.com/watch?v=" + value;
+            return true;
+        }
+        [HttpGet("ConvertString/{id}/{prefix}")]
+        public async Task<IActionResult> REDIR(string id,string prefix){
+            string newid;
+            TryNormalizeVL(id,out newid);
+            return Redirect(prefix+newid);
+        }
         [HttpGet("Descript/{id}")]
         public async Task<IActionResult> DescAsync(string id)
         {
