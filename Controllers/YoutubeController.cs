@@ -148,7 +148,7 @@ return asAscii.Replace(';',' ');
 
 
             return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "info.txt", true);*/
-            return await User2VideosAsync(id);
+            return User2VideosAsync(id);
         }
         [HttpGet("Channel2/{id}")]
         public async Task<IActionResult> User2VideosAsync(string id)
@@ -227,7 +227,7 @@ return asAscii.Replace(';',' ');
 
             return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "info.txt", true);
             */
-            return await UserVideoAsync(id);
+            return UserVideoAsync(id);
         }
         [HttpGet("Channel/{id}")]
         public async Task<IActionResult> ChannelVideosAsync(string id)
@@ -279,7 +279,7 @@ return asAscii.Replace(';',' ');
 
             return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "info.txt", true);
             */
-            return await ChannelVideosAsync(id);
+            return ChannelVideosAsync(id);
         }
         [HttpGet("searchinfo/{id}")]
         public async Task<IActionResult> SearchInfoAsync(string id)
