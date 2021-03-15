@@ -62,7 +62,8 @@ string asAscii = Encoding.ASCII.GetString(
 return asAscii.Replace(';',' ');
     }
         [HttpGet("Video/{id}")]
-        public async Task<FileStreamResult> DownloadAsync(string id)
+        public 
+        Task<FileStreamResult> DownloadAsync(string id)
         {
             var YT = new YoutubeClient();
             var videoname0 = await YT.Videos.GetAsync(id);
@@ -278,7 +279,7 @@ return asAscii.Replace(';',' ');
 
             return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "info.txt", true);
             */
-            return async ChannelVideosAsync(id);
+            return await ChannelVideosAsync(id);
         }
         [HttpGet("searchinfo/{id}")]
         public async Task<IActionResult> SearchInfoAsync(string id)
