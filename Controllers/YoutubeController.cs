@@ -123,7 +123,7 @@ return asAscii.Replace(';',' ');
         }
          [HttpGet("ChannelNew2/{date}/{id}")]
         public async Task<IActionResult> NewUser2VideosAsync(string date, string id)
-        {
+        {/*
             var YT = new YoutubeClient();
          var vids = ChannelIsValid(id) ? new ChannelId(id) : (await YT.Channels.GetByUserAsync(id)).Id;
             var ien = YT.Channels.GetUploadsAsync(vids);
@@ -146,7 +146,8 @@ return asAscii.Replace(';',' ');
                 } }
 
 
-            return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "info.txt", true);
+            return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "info.txt", true);*/
+            return await User2VideosAsync(id);
         }
         [HttpGet("Channel2/{id}")]
         public async Task<IActionResult> User2VideosAsync(string id)
@@ -165,7 +166,7 @@ return asAscii.Replace(';',' ');
 
                      string sanitized = fixstr(fileName).Replace(' ','*');
 
-                s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
+                s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
                 videos++;
 
             }
@@ -190,8 +191,8 @@ return asAscii.Replace(';',' ');
 
                      string sanitized = fixstr(fileName).Replace(' ','*');
 
-                s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
-                videos++;
+              s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
+                  videos++;
 
             }
 
@@ -200,7 +201,7 @@ return asAscii.Replace(';',' ');
         }
         [HttpGet("UserNew/{date}/{id}")]
         public async Task<IActionResult> NewUserVideosAsync(string date, string id)
-        {
+        {/*
             var YT = new YoutubeClient();
             var vids = await YT.Channels.GetByUserAsync(id);
             var ien = YT.Channels.GetUploadsAsync(vids.Id);
@@ -224,6 +225,8 @@ return asAscii.Replace(';',' ');
 
 
             return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "info.txt", true);
+            */
+            return await UserVideoAsync(id);
         }
         [HttpGet("Channel/{id}")]
         public async Task<IActionResult> ChannelVideosAsync(string id)
@@ -239,7 +242,7 @@ return asAscii.Replace(';',' ');
             {
                 var fileName = v.Title;
  string sanitized = fixstr(fileName).Replace(' ','*');
-                s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
+                s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
                 videos++;
 
             }
@@ -249,7 +252,7 @@ return asAscii.Replace(';',' ');
         }
         [HttpGet("ChannelNew/{date}/{id}")]
         public async Task<IActionResult> NewChannelVideosAsync(string date, string id)
-        {
+        {/*
             var YT = new YoutubeClient();
 
             var ien = YT.Channels.GetUploadsAsync(id);
@@ -274,6 +277,8 @@ return asAscii.Replace(';',' ');
 
 
             return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "info.txt", true);
+            */
+            return async ChannelVideosAsync(id);
         }
         [HttpGet("searchinfo/{id}")]
         public async Task<IActionResult> SearchInfoAsync(string id)
@@ -290,8 +295,8 @@ return asAscii.Replace(';',' ');
                 string sanitized = fixstr(fileName).Replace(" ", "*");
 
                 if (videos < 499) {
-                    s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
-                    videos++;
+                   s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
+                  videos++;
                 }
             }
 
@@ -327,8 +332,8 @@ return asAscii.Replace(';',' ');
                  var fileName = v.Title;
 
                      string sanitized = fixstr(fileName).Replace(' ','*');
-                s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {v.Engagement.LikeCount} {v.Engagement.DislikeCount} {v.Engagement.ViewCount} {v.UploadDate.ToString("MM/dd/yyyy")} {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
-
+                  s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
+              
             }
 
 
