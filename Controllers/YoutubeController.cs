@@ -112,7 +112,7 @@ return asAscii.Replace(';',' ');
             var vids1 = YT.Search.GetVideosAsync(id);
             var vids = await vids1.ToListAsync();
             string s = "";
-            foreach (YoutubeExplode.Videos.Video v in vids)
+            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids)
             {
 
                 s += $"{v.Id}\n";
@@ -130,7 +130,7 @@ return asAscii.Replace(';',' ');
             var vids2 = await ien.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Videos.Video v in vids2)
+            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
             {
                 if (v.UploadDate.Date >= new DateTime(int.Parse(date.Split("-")[0]), int.Parse(date.Split("-")[1]), int.Parse(date.Split("-")[2])))
                 {
@@ -158,7 +158,7 @@ return asAscii.Replace(';',' ');
             var vids2 = await ien.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Videos.Video v in vids2)
+            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
             {
                 var fileName = v.Title;
 
@@ -183,7 +183,7 @@ return asAscii.Replace(';',' ');
             var vids2 = await ien.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Videos.Video v in vids2)
+            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
             {
                 var fileName = v.Title;
 
@@ -207,7 +207,7 @@ return asAscii.Replace(';',' ');
             var vids2 = await ien.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Videos.Video v in vids2)
+            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
             {
                 if (v.UploadDate.Date >= new DateTime(int.Parse(date.Split("-")[0]), int.Parse(date.Split("-")[1]), int.Parse(date.Split("-")[2])))
                 {
@@ -235,7 +235,7 @@ return asAscii.Replace(';',' ');
             var vids2 = await ien.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Videos.Video v in vids2)
+            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
             {
                 var fileName = v.Title;
  string sanitized = fixstr(fileName).Replace(' ','*');
@@ -257,7 +257,7 @@ return asAscii.Replace(';',' ');
 
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Videos.Video v in vids2)
+            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
             {
                 if (v.UploadDate.Date >= new DateTime(int.Parse(date.Split("-")[0]), int.Parse(date.Split("-")[1]), int.Parse(date.Split("-")[2])))
                 {
@@ -283,7 +283,7 @@ return asAscii.Replace(';',' ');
             var vids2 = await vids.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Videos.Video v in vids2)
+            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
             {
                 var fileName = v.Title;
 
@@ -305,7 +305,7 @@ return asAscii.Replace(';',' ');
             var vids = YT.Search.GetVideosAsync(id);
             var vids2 = await vids.ToListAsync();
             string s = "";
-            foreach (YoutubeExplode.Videos.Video v in vids2)
+            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
             {
                 s += $"{v.Id}\n";
             }
@@ -321,7 +321,7 @@ return asAscii.Replace(';',' ');
             var vids2 = await vids.ToListAsync();
             string s = "";
 
-            foreach (YoutubeExplode.Videos.Video v in vids2)
+            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
             {
 
                  var fileName = v.Title;
