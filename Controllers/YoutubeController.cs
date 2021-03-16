@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace DL.Controllers
 {
     [Route("Grabber")]
     [ApiController]
- 
+
     public class YoutubeController : ControllerBase
     {
         private static bool ChannelIsValid(string id)
@@ -41,28 +41,29 @@ namespace DL.Controllers
 
             return !Regex.IsMatch(id, @"[^0-9a-zA-Z_\-]");
         }
-       public string fixstr(string inputString){
-     
+        public string fixstr(string inputString)
+        {
+
             string pattern = " *[\\~#%&*{}/:<>?|\"-]+ *";
             string replacement = "_";
 
             Regex regEx = new Regex(pattern);
             string sanitized = regEx.Replace(inputString, replacement);
-string asAscii = Encoding.ASCII.GetString(
-    Encoding.Convert(
-        Encoding.UTF8,
-        Encoding.GetEncoding(
-            Encoding.ASCII.EncodingName,
-            new EncoderReplacementFallback("_"),
-            new DecoderExceptionFallback()
-            ),
-        Encoding.UTF8.GetBytes(sanitized)
-    )
-);
-return asAscii.Replace(';',' ');
-    }
+            string asAscii = Encoding.ASCII.GetString(
+                Encoding.Convert(
+                    Encoding.UTF8,
+                    Encoding.GetEncoding(
+                        Encoding.ASCII.EncodingName,
+                        new EncoderReplacementFallback("_"),
+                        new DecoderExceptionFallback()
+                        ),
+                    Encoding.UTF8.GetBytes(sanitized)
+                )
+            );
+            return asAscii.Replace(';', ' ');
+        }
         [HttpGet("Video/{id}")]
-        public 
+        public async
         Task<FileStreamResult> DownloadAsync(string id)
         {
             var YT = new YoutubeClient();
@@ -75,7 +76,7 @@ return asAscii.Replace(';',' ');
 
             return File(YT.Videos.Streams.GetAsync(high).Result, $"video/{high.Container.Name}", $"{sanitized}.{high.Container.Name}", true);
         }
-   
+
         [HttpGet("VideoHigh/{id}")]
         public async Task<FileStreamResult> DownloadOnlyVideoAsync(string id)
         {
@@ -83,8 +84,8 @@ return asAscii.Replace(';',' ');
             var videoname0 = await YT.Videos.GetAsync(id);
 
 
-           string sanitized = fixstr(videoname0.Title);
-           var strs = await YT.Videos.Streams.GetManifestAsync(id);
+            string sanitized = fixstr(videoname0.Title);
+            var strs = await YT.Videos.Streams.GetManifestAsync(id);
             var high = strs.GetVideo().WithHighestVideoQuality();
 
 
@@ -97,8 +98,8 @@ return asAscii.Replace(';',' ');
             var videoname0 = await YT.Videos.GetAsync(id);
 
 
-           string sanitized = fixstr(videoname0.Title);
-           var strs = await YT.Videos.Streams.GetManifestAsync(id);
+            string sanitized = fixstr(videoname0.Title);
+            var strs = await YT.Videos.Streams.GetManifestAsync(id);
             var high = strs.GetAudioOnly().WithHighestBitrate();
 
 
@@ -122,7 +123,7 @@ return asAscii.Replace(';',' ');
 
             return File(ASCIIEncoding.Default.GetBytes(s), "text/plain", "query.txt", true);
         }
-         [HttpGet("ChannelNew2/{date}/{id}")]
+        [HttpGet("ChannelNew2/{date}/{id}")]
         public async Task<IActionResult> NewUser2VideosAsync(string date, string id)
         {/*
             var YT = new YoutubeClient();
@@ -153,7 +154,7 @@ return asAscii.Replace(';',' ');
         [HttpGet("Channel2/{id}")]
         public async Task<IActionResult> User2VideosAsync(string id)
         {
-        var YT = new YoutubeClient();
+            var YT = new YoutubeClient();
 
             var vids = ChannelIsValid(id) ? new ChannelId(id) : (await YT.Channels.GetByUserAsync(id)).Id;
             var ien = YT.Channels.GetUploadsAsync(vids);
@@ -165,7 +166,7 @@ return asAscii.Replace(';',' ');
                 var fileName = v.Title;
 
 
-                     string sanitized = fixstr(fileName).Replace(' ','*');
+                string sanitized = fixstr(fileName).Replace(' ', '*');
 
                 s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
                 videos++;
@@ -190,10 +191,10 @@ return asAscii.Replace(';',' ');
                 var fileName = v.Title;
 
 
-                     string sanitized = fixstr(fileName).Replace(' ','*');
+                string sanitized = fixstr(fileName).Replace(' ', '*');
 
-              s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
-                  videos++;
+                s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
+                videos++;
 
             }
 
@@ -242,7 +243,7 @@ return asAscii.Replace(';',' ');
             foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
             {
                 var fileName = v.Title;
- string sanitized = fixstr(fileName).Replace(' ','*');
+                string sanitized = fixstr(fileName).Replace(' ', '*');
                 s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
                 videos++;
 
@@ -295,9 +296,10 @@ return asAscii.Replace(';',' ');
 
                 string sanitized = fixstr(fileName).Replace(" ", "*");
 
-                if (videos < 499) {
-                   s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
-                  videos++;
+                if (videos < 499)
+                {
+                    s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
+                    videos++;
                 }
             }
 
@@ -330,11 +332,11 @@ return asAscii.Replace(';',' ');
             foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
             {
 
-                 var fileName = v.Title;
+                var fileName = v.Title;
 
-                     string sanitized = fixstr(fileName).Replace(' ','*');
-                  s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
-              
+                string sanitized = fixstr(fileName).Replace(' ', '*');
+                s += $"{v.Id} {sanitized.Substring(0, Math.Min(sanitized.Length, 439))} {v.Author.Replace("*", "_").Replace(" ", "*").Substring(0, Math.Min(v.Author.Replace(" ", "-").Length, 439))} {0} {0} {v.ViewCount} 8/20/1992 {v.Duration.Hours}:{v.Duration.Minutes}:{v.Duration.Seconds} ENDLINE\n";
+
             }
 
 
@@ -357,16 +359,17 @@ return asAscii.Replace(';',' ');
             var strs = await YT.Videos.GetAsync(id);
             return Redirect(strs.Thumbnails.HighResUrl);
         }
-        
-            
 
 
-            
+
+
+
         [HttpGet("ConvertString/{id}/{prefix}")]
-        public async Task<IActionResult> REDIR(string id,string prefix){
-            string newid=new VideoId(id).ToString();
-            
-            return Redirect(prefix+newid);
+        public async Task<IActionResult> REDIR(string id, string prefix)
+        {
+            string newid = new VideoId(id).ToString();
+
+            return Redirect(prefix + newid);
         }
         [HttpGet("Descript/{id}")]
         public async Task<IActionResult> DescAsync(string id)
@@ -378,16 +381,16 @@ return asAscii.Replace(';',' ');
 
             return File(ASCIIEncoding.Default.GetBytes(vids.Description), "text/plain", "desc.txt");
         }
-       
-    [HttpGet("ChannelImage/{channel}")]
-    public async Task<IActionResult> ChannelImage(string channel)
-    {
-        var YT = new YoutubeClient();
-    var  channe2l=  await  YT.Channels.GetAsync(channel);
-         
-        return Redirect(channe2l.LogoUrl);
 
-    }
+        [HttpGet("ChannelImage/{channel}")]
+        public async Task<IActionResult> ChannelImage(string channel)
+        {
+            var YT = new YoutubeClient();
+            var channe2l = await YT.Channels.GetAsync(channel);
+
+            return Redirect(channe2l.LogoUrl);
+
+        }
         [HttpGet("UserImage/{channel}")]
         public async Task<IActionResult> UserImage(string channel)
         {
@@ -400,7 +403,6 @@ return asAscii.Replace(';',' ');
     }
 
 }
-
 
 
 
