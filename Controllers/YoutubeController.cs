@@ -114,7 +114,7 @@ namespace DL.Controllers
             var vids1 = YT.Search.GetVideosAsync(id);
             var vids = await vids1.ToListAsync();
             string s = "";
-            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids)
+            foreach (var v in vids)
             {
 
                 s += $"{v.Id}\n";
@@ -185,7 +185,7 @@ namespace DL.Controllers
             var vids2 = await ien.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
+            foreach (var v in vids2)
             {
                 var fileName = v.Title;
 
@@ -210,7 +210,7 @@ namespace DL.Controllers
             var vids2 = await ien.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
+            foreach (var v in vids2)
             {
                 var fileName = v.Title;
 
@@ -235,7 +235,7 @@ namespace DL.Controllers
             var vids2 = await ien.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
+            foreach (var v in vids2)
             {
                 var fileName = v.Title;
 
@@ -259,7 +259,7 @@ namespace DL.Controllers
             var vids2 = await ien.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
+            foreach (var v in vids2)
             {
                 if (v.UploadDate.Date >= new DateTime(int.Parse(date.Split("-")[0]), int.Parse(date.Split("-")[1]), int.Parse(date.Split("-")[2])))
                 {
@@ -289,7 +289,7 @@ namespace DL.Controllers
             var vids2 = await ien.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
+            foreach (var v in vids2)
             {
                 var fileName = v.Title;
                 string sanitized = fixstr(fileName).Replace(' ', '*');
@@ -311,7 +311,7 @@ namespace DL.Controllers
             var vids2 = await ien.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
+            foreach (var v in vids2)
             {
                 var fileName = v.Title;
                 string sanitized = fixstr(fileName).Replace(' ', '*');
@@ -333,7 +333,7 @@ namespace DL.Controllers
 
              int videos = 0;
              string s = "";
-             foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
+             foreach (var v in vids2)
              {
                  if (v.UploadDate.Date >= new DateTime(int.Parse(date.Split("-")[0]), int.Parse(date.Split("-")[1]), int.Parse(date.Split("-")[2])))
                  {
@@ -361,7 +361,7 @@ namespace DL.Controllers
             var vids2 = await vids.ToListAsync();
             int videos = 0;
             string s = "";
-            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
+            foreach (var v in vids2)
             {
                 var fileName = v.Title;
 
@@ -384,7 +384,7 @@ namespace DL.Controllers
             var vids = YT.Search.GetVideosAsync(id);
             var vids2 = await vids.ToListAsync();
             string s = "";
-            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
+            foreach (var v in vids2)
             {
                 s += $"{v.Id}\n";
             }
@@ -400,7 +400,7 @@ namespace DL.Controllers
             var vids2 = await vids.ToListAsync();
             string s = "";
 
-            foreach (YoutubeExplode.Playlists.PlaylistVideo v in vids2)
+            foreach (var v in vids2)
             {
 
                 var fileName = v.Title;
