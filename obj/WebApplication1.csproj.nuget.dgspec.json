@@ -1,35 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mnola\\Documents\\ytdldir\\stark-shelf-08981\\WebApplication1.csproj": {}
+    "/home/ddlovato/Documents/ytapic/WebApplication1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mnola\\Documents\\ytdldir\\stark-shelf-08981\\WebApplication1.csproj": {
+    "/home/ddlovato/Documents/ytapic/WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mnola\\Documents\\ytdldir\\stark-shelf-08981\\WebApplication1.csproj",
+        "projectUniqueName": "/home/ddlovato/Documents/ytapic/WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "C:\\Users\\mnola\\Documents\\ytdldir\\stark-shelf-08981\\WebApplication1.csproj",
-        "packagesPath": "C:\\Users\\mnola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mnola\\Documents\\ytdldir\\stark-shelf-08981\\obj\\",
+        "projectPath": "/home/ddlovato/Documents/ytapic/WebApplication1.csproj",
+        "packagesPath": "/home/ddlovato/.nuget/packages/",
+        "outputPath": "/home/ddlovato/Documents/ytapic/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\mnola\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/home/ddlovato/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.1": {
+            "targetAlias": "netcoreapp2.1",
             "projectReferences": {}
           }
         },
@@ -41,7 +36,12 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
+          "targetAlias": "netcoreapp2.1",
           "dependencies": {
+            "AsyncEnumerator": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",
@@ -54,13 +54,9 @@
               "version": "[2.1.0, )",
               "autoReferenced": true
             },
-            "System.Linq.Async": {
-              "target": "Package",
-              "version": "[4.1.1, )"
-            },
             "YoutubeExplode": {
               "target": "Package",
-              "version": "[5.0.1, )"
+              "version": "[6.0.5, )"
             }
           },
           "imports": [
@@ -73,7 +69,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
         }
       }
     }

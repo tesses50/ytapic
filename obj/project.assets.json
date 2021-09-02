@@ -14,6 +14,19 @@
           "lib/netstandard2.0/AngleSharp.dll": {}
         }
       },
+      "AsyncEnumerator/4.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "1.0.0",
+          "System.Threading.Tasks.Extensions": "4.5.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/AsyncEnumerable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AsyncEnumerable.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -1515,7 +1528,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/1.1.0": {
+      "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll": {}
@@ -3324,18 +3337,6 @@
           "lib/netstandard1.6/System.Linq.dll": {}
         }
       },
-      "System.Linq.Async/4.1.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "1.1.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Linq.Async.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Linq.Async.dll": {}
-        }
-      },
       "System.Linq.Expressions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3644,7 +3645,7 @@
           "ref/netstandard1.5/System.Runtime.dll": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.7.0": {
+      "System.Runtime.CompilerServices.Unsafe/4.7.1": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -4121,7 +4122,7 @@
           "ref/netstandard1.3/System.Text.Encoding.Extensions.dll": {}
         }
       },
-      "System.Text.Encodings.Web/4.7.0": {
+      "System.Text.Encodings.Web/4.7.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
@@ -4130,12 +4131,12 @@
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
         }
       },
-      "System.Text.Json/4.7.1": {
+      "System.Text.Json/4.7.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.0",
-          "System.Runtime.CompilerServices.Unsafe": "4.7.0",
-          "System.Text.Encodings.Web": "4.7.0"
+          "System.Runtime.CompilerServices.Unsafe": "4.7.1",
+          "System.Text.Encodings.Web": "4.7.1"
         },
         "compile": {
           "lib/netstandard2.0/System.Text.Json.dll": {}
@@ -4189,7 +4190,7 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "System.Threading.Tasks.Extensions/4.5.3": {
+      "System.Threading.Tasks.Extensions/4.5.4": {
         "type": "package",
         "compile": {
           "ref/netcoreapp2.1/_._": {}
@@ -4381,13 +4382,13 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "YoutubeExplode/5.0.1": {
+      "YoutubeExplode/6.0.5": {
         "type": "package",
         "dependencies": {
           "AngleSharp": "0.14.0",
-          "Microsoft.Bcl.AsyncInterfaces": "1.1.0",
-          "System.Text.Json": "4.7.1",
-          "System.Threading.Tasks.Extensions": "4.5.3"
+          "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
+          "System.Text.Json": "4.7.2",
+          "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "compile": {
           "lib/netstandard2.0/YoutubeExplode.dll": {}
@@ -4418,6 +4419,27 @@
         "lib/netstandard1.3/AngleSharp.xml",
         "lib/netstandard2.0/AngleSharp.dll",
         "lib/netstandard2.0/AngleSharp.xml"
+      ]
+    },
+    "AsyncEnumerator/4.0.2": {
+      "sha512": "mjBg9pGuQVbCeC/3t75B74mRjIIqOg6o212CJ7g37wRrPIJTGzuFKo9/TsVuJl2by2I1ESJLyFnNFHHEMRUysA==",
+      "type": "package",
+      "path": "asyncenumerator/4.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "asyncenumerator.4.0.2.nupkg.sha512",
+        "asyncenumerator.nuspec",
+        "lib/net45/AsyncEnumerable.dll",
+        "lib/net45/AsyncEnumerable.xml",
+        "lib/net461/AsyncEnumerable.dll",
+        "lib/net461/AsyncEnumerable.xml",
+        "lib/netstandard1.4/AsyncEnumerable.dll",
+        "lib/netstandard1.4/AsyncEnumerable.xml",
+        "lib/netstandard2.0/AsyncEnumerable.dll",
+        "lib/netstandard2.0/AsyncEnumerable.xml",
+        "lib/netstandard2.1/AsyncEnumerable.dll",
+        "lib/netstandard2.1/AsyncEnumerable.xml"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -5684,13 +5706,14 @@
         "microsoft.aspnetcore.webutilities.nuspec"
       ]
     },
-    "Microsoft.Bcl.AsyncInterfaces/1.1.0": {
-      "sha512": "1Am6l4Vpn3/K32daEqZI+FFr96OlZkgwK2LcT3pZ2zWubR5zTPW3/FkO1Rat9kb7oQOa4rxgl9LJHc5tspCWfg==",
+    "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
+      "sha512": "yuvf07qFWFqtK3P/MRkEKLhn5r2UbSpVueRziSqj0yJQIKFwG1pq9mOayK3zE5qZCTs0CbrwL9M6R8VwqyGy2w==",
       "type": "package",
-      "path": "microsoft.bcl.asyncinterfaces/1.1.0",
+      "path": "microsoft.bcl.asyncinterfaces/1.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll",
@@ -5699,7 +5722,7 @@
         "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.xml",
         "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll",
         "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.xml",
-        "microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
+        "microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
         "microsoft.bcl.asyncinterfaces.nuspec",
         "ref/net461/Microsoft.Bcl.AsyncInterfaces.dll",
         "ref/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll",
@@ -9006,33 +9029,6 @@
         "system.linq.nuspec"
       ]
     },
-    "System.Linq.Async/4.1.1": {
-      "sha512": "+MYrr8Jz8ayKhOJrqh+9EH4y2qcKYUehxKXE3j4IG5to4FlXz6HF0CgBUtYqrcbW5uOaCEUoZ+SVnp4dEIAi6Q==",
-      "type": "package",
-      "path": "system.linq.async/4.1.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net461/System.Linq.Async.dll",
-        "lib/net461/System.Linq.Async.xml",
-        "lib/netcoreapp3.0/System.Linq.Async.dll",
-        "lib/netcoreapp3.0/System.Linq.Async.xml",
-        "lib/netstandard2.0/System.Linq.Async.dll",
-        "lib/netstandard2.0/System.Linq.Async.xml",
-        "lib/netstandard2.1/System.Linq.Async.dll",
-        "lib/netstandard2.1/System.Linq.Async.xml",
-        "ref/net461/System.Linq.Async.dll",
-        "ref/net461/System.Linq.Async.xml",
-        "ref/netcoreapp3.0/System.Linq.Async.dll",
-        "ref/netcoreapp3.0/System.Linq.Async.xml",
-        "ref/netstandard2.0/System.Linq.Async.dll",
-        "ref/netstandard2.0/System.Linq.Async.xml",
-        "ref/netstandard2.1/System.Linq.Async.dll",
-        "ref/netstandard2.1/System.Linq.Async.xml",
-        "system.linq.async.4.1.1.nupkg.sha512",
-        "system.linq.async.nuspec"
-      ]
-    },
     "System.Linq.Expressions/4.3.0": {
       "sha512": "PGKkrd2khG4CnlyJwxwwaWWiSiWFNBGlgXvJpeO0xCXrZ89ODrQ6tjEWS/kOqZ8GwEOUATtKtzp1eRgmYNfclg==",
       "type": "package",
@@ -10057,26 +10053,31 @@
         "system.runtime.nuspec"
       ]
     },
-    "System.Runtime.CompilerServices.Unsafe/4.7.0": {
-      "sha512": "IpU1lcHz8/09yDr9N+Juc7SCgNUz+RohkCQI+KsWKR67XxpFr8Z6c8t1iENCXZuRuNCc4HBwme/MDHNVCwyAKg==",
+    "System.Runtime.CompilerServices.Unsafe/4.7.1": {
+      "sha512": "zOHkQmzPCn5zm/BH+cxC1XbUS3P4Yoi3xzW7eRgVpDR2tPGSzyMZ17Ig1iRkfJuY0nhxkQQde8pgePNiA7z7TQ==",
       "type": "package",
-      "path": "system.runtime.compilerservices.unsafe/4.7.0",
+      "path": "system.runtime.compilerservices.unsafe/4.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
         "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml",
         "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
         "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/net461/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "system.runtime.compilerservices.unsafe.4.7.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -11248,31 +11249,34 @@
         "system.text.encoding.extensions.nuspec"
       ]
     },
-    "System.Text.Encodings.Web/4.7.0": {
-      "sha512": "IJanJWPQvya2sbGStt3Fkdy4IaomUBSadAfYWeJDQw0zclMk9ixSvMeei6cSmTTQ6ZkGIIAbhHZVCoLR7GgX7Q==",
+    "System.Text.Encodings.Web/4.7.1": {
+      "sha512": "3qreYFQcLnyFk1LuaNWyyWE+sfkfe5eSTaIIssYrLNUIDbgyZNQBYQSzSDo4AprpjVeVX2T4KHKii9fiSZVUow==",
       "type": "package",
-      "path": "system.text.encodings.web/4.7.0",
+      "path": "system.text.encodings.web/4.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Text.Encodings.Web.dll",
+        "lib/net461/System.Text.Encodings.Web.xml",
         "lib/netstandard1.0/System.Text.Encodings.Web.dll",
         "lib/netstandard1.0/System.Text.Encodings.Web.xml",
         "lib/netstandard2.0/System.Text.Encodings.Web.dll",
         "lib/netstandard2.0/System.Text.Encodings.Web.xml",
         "lib/netstandard2.1/System.Text.Encodings.Web.dll",
         "lib/netstandard2.1/System.Text.Encodings.Web.xml",
-        "system.text.encodings.web.4.7.0.nupkg.sha512",
+        "system.text.encodings.web.4.7.1.nupkg.sha512",
         "system.text.encodings.web.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "System.Text.Json/4.7.1": {
-      "sha512": "XwzMbct3iNepJaFylN1+l8weWlFburEzXidqleSsLvSXdHSIJHEKtRVKHPlpWcFmJX6k3goPFfVgUfp40RR+bg==",
+    "System.Text.Json/4.7.2": {
+      "sha512": "TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
       "type": "package",
-      "path": "system.text.json/4.7.1",
+      "path": "system.text.json/4.7.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11285,7 +11289,7 @@
         "lib/netcoreapp3.0/System.Text.Json.xml",
         "lib/netstandard2.0/System.Text.Json.dll",
         "lib/netstandard2.0/System.Text.Json.xml",
-        "system.text.json.4.7.1.nupkg.sha512",
+        "system.text.json.4.7.2.nupkg.sha512",
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -11535,10 +11539,10 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "System.Threading.Tasks.Extensions/4.5.3": {
-      "sha512": "+MvhNtcvIbqmhANyKu91jQnvIRVSTiaOiFNfKWwXGHG48YAb4I/TyH8spsySiPYla7gKal5ZnF3teJqZAximyQ==",
+    "System.Threading.Tasks.Extensions/4.5.4": {
+      "sha512": "zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
       "type": "package",
-      "path": "system.threading.tasks.extensions/4.5.3",
+      "path": "system.threading.tasks.extensions/4.5.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11546,6 +11550,8 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
+        "lib/net461/System.Threading.Tasks.Extensions.dll",
+        "lib/net461/System.Threading.Tasks.Extensions.xml",
         "lib/netcoreapp2.1/_._",
         "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll",
         "lib/netstandard1.0/System.Threading.Tasks.Extensions.xml",
@@ -11564,7 +11570,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.threading.tasks.extensions.4.5.3.nupkg.sha512",
+        "system.threading.tasks.extensions.4.5.4.nupkg.sha512",
         "system.threading.tasks.extensions.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -12008,65 +12014,62 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "YoutubeExplode/5.0.1": {
-      "sha512": "3Aqea9QjIG58Zio8JO3G/0vp8BKFfOds69b7EFbL3E03ri7yS6kyzh5UCCuIzSxX9ndGwWMA8hxoLOojn+15UQ==",
+    "YoutubeExplode/6.0.5": {
+      "sha512": "64y2pjhnC+cOQozlqYASsRhrfIShJm1pvuo4nRPT+oA7rVQemOkpUEMrsayjY5zSVepGqEBx4GIzxi4wscxHsw==",
       "type": "package",
-      "path": "youtubeexplode/5.0.1",
+      "path": "youtubeexplode/6.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "ReadMe.md",
         "favicon.png",
         "lib/net461/YoutubeExplode.dll",
         "lib/net461/YoutubeExplode.xml",
+        "lib/net5.0/YoutubeExplode.dll",
+        "lib/net5.0/YoutubeExplode.xml",
         "lib/netcoreapp3.0/YoutubeExplode.dll",
         "lib/netcoreapp3.0/YoutubeExplode.xml",
         "lib/netstandard2.0/YoutubeExplode.dll",
         "lib/netstandard2.0/YoutubeExplode.xml",
         "lib/netstandard2.1/YoutubeExplode.dll",
         "lib/netstandard2.1/YoutubeExplode.xml",
-        "youtubeexplode.5.0.1.nupkg.sha512",
+        "youtubeexplode.6.0.5.nupkg.sha512",
         "youtubeexplode.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "AsyncEnumerator >= 4.0.2",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.NETCore.App >= 2.1.0",
-      "System.Linq.Async >= 4.1.1",
-      "YoutubeExplode >= 5.0.1"
+      "YoutubeExplode >= 6.0.5"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mnola\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "/home/ddlovato/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mnola\\Documents\\ytdldir\\stark-shelf-08981\\WebApplication1.csproj",
+      "projectUniqueName": "/home/ddlovato/Documents/ytapic/WebApplication1.csproj",
       "projectName": "WebApplication1",
-      "projectPath": "C:\\Users\\mnola\\Documents\\ytdldir\\stark-shelf-08981\\WebApplication1.csproj",
-      "packagesPath": "C:\\Users\\mnola\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mnola\\Documents\\ytdldir\\stark-shelf-08981\\obj\\",
+      "projectPath": "/home/ddlovato/Documents/ytapic/WebApplication1.csproj",
+      "packagesPath": "/home/ddlovato/.nuget/packages/",
+      "outputPath": "/home/ddlovato/Documents/ytapic/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\mnola\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "/home/ddlovato/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
+          "targetAlias": "netcoreapp2.1",
           "projectReferences": {}
         }
       },
@@ -12078,7 +12081,12 @@
     },
     "frameworks": {
       "netcoreapp2.1": {
+        "targetAlias": "netcoreapp2.1",
         "dependencies": {
+          "AsyncEnumerator": {
+            "target": "Package",
+            "version": "[4.0.2, )"
+          },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
@@ -12091,13 +12099,9 @@
             "version": "[2.1.0, )",
             "autoReferenced": true
           },
-          "System.Linq.Async": {
-            "target": "Package",
-            "version": "[4.1.1, )"
-          },
           "YoutubeExplode": {
             "target": "Package",
-            "version": "[5.0.1, )"
+            "version": "[6.0.5, )"
           }
         },
         "imports": [
@@ -12110,7 +12114,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
       }
     }
   }
