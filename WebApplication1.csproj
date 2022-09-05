@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="AsyncEnumerator" Version="4.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.App" />
+    
  
     <PackageReference Include="YoutubeExplode" Version="6.0.5" />
   </ItemGroup>
